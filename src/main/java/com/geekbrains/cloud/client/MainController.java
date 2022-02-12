@@ -3,7 +3,6 @@ package com.geekbrains.cloud.client;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import jdk.tools.jlink.internal.Platform;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -29,24 +28,24 @@ public class MainController implements Initializable {
 
 //     Platform.runLater(() -> {})
     private void updateClientView() {
-        Platform.runLater(() -> {
+
             clientPath.setText(currentDirectory.getAbsolutePath());
             clientView.getItems().clear();
             clientView.getItems().add("...");
             clientView.getItems()
                     .addAll(currentDirectory.list());
-        });
-    }
+        };
+
 
     private void updateServerView() {
-        Platform.runLater(() -> {
+
             serverPath.setText(serverDirectory.getPath());
             serverView.getItems().clear();
             serverView.getItems().add("...");
             serverView.getItems()
                     .addAll(serverDirectory.list());
-        });
-    }
+        };
+
     public void download(ActionEvent actionEvent) throws IOException {
         String item = serverView.getSelectionModel().getSelectedItem();
         File selected = serverDirectory.toPath().resolve(item).toFile();
